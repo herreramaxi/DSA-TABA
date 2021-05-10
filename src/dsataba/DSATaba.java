@@ -13,21 +13,12 @@ public class DSATaba {
 
     /**
      * @param args the command line arguments
+     * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
-        boolean printResultsForThreeCollections = false;
-
-        if (printResultsForThreeCollections) {
-            printComparisonsFromOneTo(10);
-            printComparisonsFromOneTo(30);
-            printComparisonsFromOneTo(50);
-            
-            return;
-        }
-
-        for (int i = 1; i <= 20; i++) {
-               printComparisonsFromOneTo2(i*100);
-        }     
+        printComparisonsFromOneTo(10);
+        printComparisonsFromOneTo(30);
+        printComparisonsFromOneTo(50);
     }
 
     private static void printComparisonsFromOneTo(int topNumber) throws Exception {
@@ -35,6 +26,8 @@ public class DSATaba {
         int searchedElement = list.size() + 1;
 
         System.out.println("List: " + list);
+        System.out.println("Searching for: " + searchedElement);
+        
         int index = list.linearSearch(searchedElement);
 
         if (index >= 0)
@@ -43,6 +36,8 @@ public class DSATaba {
         index = list.binarySearch(searchedElement);
         if (index >= 0)
             throw new Exception("Item was found: " + searchedElement);
+        
+         System.out.println("");
     }
 
     private static SearchArrayList<Integer> getListFromOneTo(int elements) {
@@ -53,19 +48,4 @@ public class DSATaba {
 
         return list;
     }
-    
-      private static void printComparisonsFromOneTo2(int topNumber) throws Exception {
-        SearchArrayList<Integer> list = getListFromOneTo(topNumber);
-        int searchedElement = list.size() + 1;
-     
-        int index = list.linearSearch(searchedElement);
-
-        if (index >= 0)
-            throw new Exception("Item was found: " + searchedElement);
-
-        index = list.binarySearch(searchedElement);
-        if (index >= 0)
-            throw new Exception("Item was found: " + searchedElement);
-    }
-
 }

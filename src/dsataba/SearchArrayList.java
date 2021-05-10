@@ -27,7 +27,11 @@ public class SearchArrayList<E> extends ArrayList<E> {
             k++;
         }
 
-        return k < this.size() && (compare(k, key) == 0) ? k : -1;
+        int result = k < this.size() && (compare(k, key) == 0) ? k : -1;
+
+        System.out.println("Linear search - comparisons: " + _comparisons);
+
+        return result;
     }
 
     public int binarySearch(E key) {
@@ -50,6 +54,8 @@ public class SearchArrayList<E> extends ArrayList<E> {
                 end = middle - 1;
             }
         }
+
+        System.out.println("Binary search - comparisons: " + _comparisons);
 
         return found ? middle : -1;
     }
